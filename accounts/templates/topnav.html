@@ -1,0 +1,21 @@
+{% load static %}
+<div class="bg-black w-full flex items-center justify-end py-3 md:py-0 px-8 space-x-6 fixed z-50">
+    <a href="/" class="text-white font-light mr-auto text-xl md:px-14 py-4">
+        E BANK
+    </a>
+   
+    <div class="relative">
+        <div 
+        class="inline-flex relative items-center p-2 font-medium text-center text-white rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <a href="{% url 'customers' %}" >Home</a>
+    </div>
+        <div 
+            class="inline-flex relative items-center p-2 font-medium text-center text-white rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <a href="{% url 'accounts' %}" >Accounts</a>
+        </div>
+        <div 
+        class="inline-flex relative items-center p-2 font-medium text-center text-white rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <a href="{% url 'withdraw' %}" >Withdraw</a>
+    </div>
+    </div>
+</div>

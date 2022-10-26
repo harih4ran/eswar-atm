@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class='bg-white flex justify-center items-center py-36 shadow-lg'>
+    <div class="px-6 py-3 rounded border w-96">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="flex flex-col my-2">
+                <label class="text-xs text-gray-400">Account Number</label>
+                <input 
+                    id="account_no"
+                    class="border rounded px-3 py-1 mt-2"
+                    type="number" 
+                    name="account_no"
+                    required
+                />
+            </div>
+            <div class="flex flex-col my-2">
+                <label class="text-xs text-gray-400">Amount</label>
+                <input 
+                    id="amount"
+                    class="border rounded px-3 py-1 mt-2"
+                    type="number" 
+                    name="amount"
+                    required
+                />
+            </div>
+            <div class="flex flex-col items-center justify-center my-3">
+                <button type="submit" class="my-3 py-2 w-full rounded-lg bg-purple-900 text-white border-2 border-purple-900 hover:bg-transparent hover:text-purple-900 font-bold">
+                    Withdraw Amount
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

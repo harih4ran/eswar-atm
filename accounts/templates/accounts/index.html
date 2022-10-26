@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div id="modal" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-20 overflow-y-auto h-full px-4 modal t">
+  <div class="relative top-10 bottom-20 shadow-xl rounded-md bg-white transition ease-in duration-700">
+    <div class="flex justify-between items-center text-white text-xl rounded-t-md px-4 py-2">
+      <span class="bg-purple-100 text-purple-700 rounded-full px-3 py-1 text-md font-bold">Accounts</span>
+      <button onclick="closeModal('modal')" class="text-black">x</button>
+    </div>
+    <div class="max-h-full w-full overflow-y-scroll p-4">
+      <div class="bg-white rounded-lg">
+        <form method="POST" autocomplete="off">
+          {% csrf_token %}
+          <div class="flex flex-wrap">
+            <div class="w-full md:w-1/3 px-4">{{form.customer|as_crispy_field}}</div>
+            <div class="w-full md:w-1/3 px-4">{{form.account_no|as_crispy_field}}</div>
+            <div class="w-full md:w-1/3 px-4">{{form.account_type|as_crispy_field}}</div>
+            <div class="w-full md:w-1/3 px-4">{{form.amount|as_crispy_field}}</div>
+            <div class="w-full md:w-1/3 px-4">{{form.pin|as_crispy_field}}</div>
+          </div>
+          <div class="text-center">
+            <button type="submit"
+              class="px-4 py-2 font-bold bg-purple-900 border-2 border-purple-900 hover:bg-transparent hover:text-purple-900 rounded-lg text-white">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'accounts/table.html' %}
+<script>
+  $(document).ready(function () {
+    $('#table_id').DataTable({
+      autoWidth: false,
+      columnDefs: [
+        {
+          targets: ['_all'],
+          className: 'mdc-data-table__cell',
+        },
+      ],
+    });
+  });
+</script>
+{% endblock %}
